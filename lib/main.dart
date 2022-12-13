@@ -1,8 +1,9 @@
 import 'package:client_quiz_app/module/auth/screen/login.screen.dart';
-import 'package:client_quiz_app/module/home/screen/home.page.dart';
+import 'package:client_quiz_app/module/quiz/screen/quiz.page.dart';
 import 'package:flutter/material.dart';
 
 import 'common/routes.dart';
+import 'module/result/screen/result.page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +12,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Quiz App School',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
       initialRoute: kLogin,
       routes: {
         kLogin: (context) => const LoginPage(),
-        kHome: (context) => const HomePage()
+        kHome: (context) => const HomePage(),
+        kResult: (context) => const ResultPage()
       },
     );
   }

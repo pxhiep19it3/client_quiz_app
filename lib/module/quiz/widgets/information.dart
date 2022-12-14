@@ -11,52 +11,47 @@ class Information extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(builder: (context, model, child) {
-      return model.examme != null
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                  !isSmall
-                      ? Text(
-                          model.examme!.eID!.toUpperCase(),
-                          style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        )
-                      : Container(),
-                  !isSmall
-                      ? const VerticalDivider(
-                          color: Colors.white,
-                        )
-                      : Container(),
-                  Text(model.examme!.fullName!.toUpperCase(),
-                      style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold)),
-                  !isSmall
-                      ? const VerticalDivider(
-                          color: Colors.white,
-                        )
-                      : Container(),
-                  !isSmall
-                      ? Text(model.examme!.bod!.toUpperCase(),
-                          style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold))
-                      : Container(),
-                  const VerticalDivider(
+      return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            !isSmall
+                ? Text(
+                    model.examme.eID!.toUpperCase(),
+                    style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  )
+                : Container(),
+            !isSmall
+                ? const VerticalDivider(
                     color: Colors.white,
-                  ),
-                  const Clock(),
-                ])
-          : Container();
+                  )
+                : Container(),
+            Text(model.examme.fullName!.toUpperCase(),
+                style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold)),
+            !isSmall
+                ? const VerticalDivider(
+                    color: Colors.white,
+                  )
+                : Container(),
+            !isSmall
+                ? Text(model.examme.bod!.toUpperCase(),
+                    style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold))
+                : Container(),
+            const VerticalDivider(
+              color: Colors.white,
+            ),
+            const Clock(),
+          ]);
     });
   }
 }
 
-// value.examme != null
-//                   ? 
-//                   : Container();

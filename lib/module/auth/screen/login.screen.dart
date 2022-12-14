@@ -5,6 +5,7 @@ import 'package:client_quiz_app/common/widgets/basic_button.dart';
 import 'package:client_quiz_app/module/auth/provider/auth.provider.dart';
 import 'package:client_quiz_app/common/responsive/responsive_container.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,6 +18,20 @@ class _LoginPageState extends State<LoginPage> {
   final form = GlobalKey<FormState>();
 
   AuthProvider provider = AuthProvider();
+
+  @override
+  void initState() {
+    super.initState();
+    initData();
+  }
+
+  initData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('userID', '');
+    await prefs.setString('examID', '');
+    await prefs.setString('exammeID', '');
+    await prefs.setString('examCode', '');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,6 +145,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   void homePage(BuildContext context) {
-    Navigator.of(context).pushNamed(kHome);
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil(kHome, (Route<dynamic> route) => false);
   }
 }

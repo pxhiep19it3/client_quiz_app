@@ -1,5 +1,5 @@
 class Url {
-  static const String baseUrl = "http://192.168.1.12/quiz";
+  static const String baseUrl = "http://192.168.1.12/quiz/user";
   static const String login = "$baseUrl/login.php";
   static const String getExamme = "$baseUrl/getExamme.php";
   static const String getQuestion = "$baseUrl/getQuestion.php";

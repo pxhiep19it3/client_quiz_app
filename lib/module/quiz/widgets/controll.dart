@@ -79,7 +79,7 @@ class Controll extends StatelessWidget {
                       builder: (BuildContext context) => AlertDialog(
                         title: const Text('Thông báo'),
                         content: const Text('Bạn có chắc chắn nộp bài?'),
-                        actions: <Widget>[
+                        actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(context),
                             child: const Text('Tiếp tục làm bài'),

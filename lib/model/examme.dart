@@ -5,6 +5,7 @@ class Examme {
   String? bod;
   int? timeTest;
   String? pcID;
+  bool? doneTest;
 
   Examme({
     this.exammeID,
@@ -13,6 +14,7 @@ class Examme {
     this.bod,
     this.timeTest,
     this.pcID,
+    this.doneTest
   });
   factory Examme.fromJson(Map<String, dynamic> json) {
     return Examme(
@@ -22,6 +24,7 @@ class Examme {
       bod: json['bod'],
       timeTest: int.parse(json['timeTest']),
       pcID: json['pcID'],
+      doneTest : int.parse(json['doneTest']) == 1 ? true : false ,
     );
   }
 }

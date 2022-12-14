@@ -20,11 +20,14 @@ class HomeProvider extends ChangeNotifier {
   String? _examID;
   String? get examID => _examID;
 
+  bool _isLoading = true;
+  bool get isLoading => _isLoading;
+
   void getQuestion() async {
     final prefs = await SharedPreferences.getInstance();
     _userID = prefs.getString('userID');
     _examID = prefs.getString('examID');
-    _questions = await repo.getQuestion('141');
+    _questions = await repo.getQuestion(_userID ?? '');
     notifyListeners();
   }
 
@@ -64,21 +67,24 @@ class HomeProvider extends ChangeNotifier {
     _questions[index].userRep = an;
     notifyListeners();
   }
+
   UserRepo repoUser = UserRepo();
-  Examme? _examme;
-  Examme? get examme => _examme;
+  Examme _examme = Examme();
+  Examme get examme => _examme;
   void getExamme() async {
     final prefs = await SharedPreferences.getInstance();
-    String? eID = prefs.getString('userlogin');
-
+    String? eID = prefs.getString('exammeID');
     List<Examme> tmp = [];
-    tmp = await repoUser.getExamme('12');
-    for (var i = 0; i < tmp.length; i++) {
-      _examme = tmp[0];
+    if (eID != '') {
+      _isLoading = false;
+      tmp = await repoUser.getExamme(eID!);
+      for (var i = 0; i < tmp.length; i++) {
+        _examme = tmp[0];
+      }
     }
-    await prefs.setInt('time', _examme!.timeTest!);
-    await prefs.setString('name', _examme!.fullName!);
-    await prefs.setString('bod', _examme!.bod!);
+    await prefs.setInt('time', _examme.timeTest ?? 0);
+    await prefs.setString('name', _examme.fullName ?? '');
+    await prefs.setString('bod', _examme.bod ?? '');
     notifyListeners();
   }
 }

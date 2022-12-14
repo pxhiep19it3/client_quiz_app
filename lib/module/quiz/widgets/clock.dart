@@ -56,11 +56,11 @@ class _ClockState extends State<Clock> {
   }
 
   void _startTimer() {
-    const duration = Duration(seconds: 1);
-    _timer = Timer.periodic(duration, (Timer timer) {
+    Timer.periodic(const Duration(seconds: 1), (Timer t) async {
+      _timer = t;
+      if (t.tick >= _maxSeconds) t.cancel();
       setState(() {
-        _currentSecond = timer.tick;
-        if (timer.tick >= _maxSeconds) timer.cancel();
+        _currentSecond = t.tick;
       });
     });
   }

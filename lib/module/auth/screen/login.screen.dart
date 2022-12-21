@@ -82,7 +82,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 width: width,
                 child: TextFormField(
-                  controller: provider.examController,
+                  controller: provider.examCodeController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Chưa nhập mã bài thi!';
@@ -107,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                     }
                     return null;
                   },
-                  controller: provider.exammeeControleer,
+                  controller: provider.eIDController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Ví dụ: 19IT152',

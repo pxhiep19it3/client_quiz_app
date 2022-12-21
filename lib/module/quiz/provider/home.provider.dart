@@ -58,8 +58,13 @@ class HomeProvider extends ChangeNotifier {
     if (_questions[index].userRep == null) {
       _questions[index].userRep = an;
       notifyListeners();
-      await repo.insertExamResult(id, answer.id, answer.isCorrect ? 1 : 0,
-          int.parse(_userID!), int.parse(_examID!), score);
+      await repo.insertExamResult(
+          id,
+          answer.id,
+          answer.isCorrect ? 1 : 0,
+          int.parse(_userID!),
+          int.parse(_examID!),
+          answer.isCorrect ? score : 0);
     } else {
       await repo.updateExamResult(id, an.answerID!, answer.isCorrect ? 1 : 0,
           answer.isCorrect ? score : 0);

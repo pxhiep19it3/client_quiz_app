@@ -15,11 +15,11 @@ class UserRepo {
   String? _examID;
   String? get examID => _examID;
 
-  Future<void> login(String examID, String exammeID) async {
+  Future<void> login(String code, String eID) async {
     var url = Uri.parse(Url.login);
     var response = await http.post(url, body: {
-      "examID": examID,
-      "exammeID": exammeID,
+      "eID": eID,
+      "code": code,
     });
 
     var data = json.decode(response.body);
